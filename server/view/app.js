@@ -89,14 +89,8 @@ app.post("/api/update_my_loc", (req, res) =>{
 })
 
 
-
-
-
-
-
-
-
 // run
 app.listen(5000, () => {
   console.log("Server is working on => localhost:5000 ");
 });
+
