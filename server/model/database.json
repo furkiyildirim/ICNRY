@@ -1,0 +1,11 @@
+{
+    "cluster-url": "localhost:27017",
+    "username": "test123",
+    "password": "123456",
+    "database": "icnry_service_database",
+    "collections":{
+        "data": "data",
+        "security": "security",
+        "users": "user_collection"
+    }
+}

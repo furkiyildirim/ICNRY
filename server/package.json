@@ -1,0 +1,16 @@
+{
+  "name": "modules",
+  "version": "1.0.0",
+  "description": "Server side process",
+  "license": "ISC",
+  "author": "Furkan Yildirim",
+  "type": "commonjs",
+  "main": "view/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongodb": "^7.0.0"
+  }
+}
