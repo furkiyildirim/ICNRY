@@ -76,7 +76,7 @@ app.post("/api/create_account", (req, res) => {
           {
             'status': 200,
             'message': 'account created successfully',
-            'token': services.token_generator(username=account_query['username'], password=account_query['password'])
+            'token': services.token_generator(account_query['username'], account_query['password'])
           }
         )
       }
@@ -85,12 +85,26 @@ app.post("/api/create_account", (req, res) => {
 })
 
 app.post("/api/update_my_loc", (req, res) =>{
+  const data = {
+    username: res.body['username'],
+    token: res.body['token'],  // verify
+    location: res.body['location'] // location:{loc: xyz, time: aa.aa.aaaa hh.hh.hh}  => add this into the array
+  }
 
+  function verify(data){
+
+  }
 })
+
+
+
+
+
+
+
 
 
 // run
 app.listen(5000, () => {
   console.log("Server is working on => localhost:5000 ");
 });
-
