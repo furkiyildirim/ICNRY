@@ -26,7 +26,7 @@ async function find_user(query){
     }finally {
     }
 }
-async function create_user(data){
+async function create_user(data, ip_addr){
     try {
         var data = {
             username:data['username'],
@@ -39,8 +39,36 @@ async function create_user(data){
         // user database
         const udb = await database.db(database_config['database'])
         const users = udb.collection(database_config['collections']['users']);
+
         users.insertOne(data)
         console.log("1 user created");
+
+        const security = udb.collection(database_config['collections']['security']);
+        const user_id  =  await users.find(data).toArray()  // ERROR:
+        console.log(user_id)
+        security.insertOne(
+            {
+                u_id:user_id,
+                ip_address: ip_addr,
+                success: true,
+                date: new Date()
+            }
+        )
+        console.log("login attempting logged");
+
+        const loc_data = udb.collection(database_config['collections']['data']);
+        loc_data.insertOne(
+            {
+                ud_id:user_id,
+                location: [],
+                access_permission: false
+            }
+        )
+        console.log("loc data saved");
+
+
+
+
 
         // TODO: Do something.
     }catch(err){
